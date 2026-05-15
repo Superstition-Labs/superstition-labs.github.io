@@ -1,0 +1,37 @@
+.footerDark,
+.footerLight {
+  font-size: 0.9rem;
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+}
+
+.footerDark {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footerDark a {
+  color: var(--color-on-brand);
+  text-decoration: none;
+}
+
+.footerDark a:hover {
+  text-decoration: underline;
+}
+
+.footerLight {
+  background: var(--color-surface-muted);
+  color: var(--color-text-subtle);
+}
+
+.footerLight a {
+  color: var(--color-brand);
+  text-decoration: none;
+}
+
+.links {
+  margin-bottom: var(--space-sm);
+}
+
+.links a {
+  margin: 0 var(--space-sm);
+}

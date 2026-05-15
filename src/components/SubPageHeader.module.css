@@ -1,0 +1,20 @@
+.header {
+  background: var(--gradient-brand);
+  color: var(--color-on-brand);
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.header a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+}
+
+.header a:hover {
+  color: var(--color-on-brand);
+}

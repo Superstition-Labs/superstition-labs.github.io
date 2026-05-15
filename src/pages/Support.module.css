@@ -1,0 +1,25 @@
+.contactCard {
+  background: var(--color-surface-soft);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-lg);
+  padding: 25px;
+}
+
+.contactCard h3 {
+  color: var(--color-text);
+  font-size: 1.2rem;
+  margin-bottom: var(--space-sm);
+}
+
+.contactCard p {
+  margin-bottom: 10px;
+}
+
+.link {
+  color: var(--color-brand);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
