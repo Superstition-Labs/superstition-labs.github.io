@@ -7,31 +7,21 @@ import { SiteHeader } from './SiteHeader';
 
 interface SubPageProps {
   readonly children: ReactNode;
-  readonly code?: string;
   readonly eyebrow?: string;
   readonly title: string;
 }
 
-export function SubPage({
-  children,
-  code = 'DOC',
-  eyebrow,
-  title,
-}: SubPageProps): ReactElement {
+export function SubPage({ children, eyebrow, title }: SubPageProps): ReactElement {
   return (
     <div className="dot-grid min-h-screen bg-bg text-fg">
       <SiteHeader />
-      <main className="mx-auto max-w-3xl px-5 pb-24 pt-40 sm:px-8 sm:pt-48">
-        <div className="mb-6 flex items-center gap-3">
-          <span className="readout border border-accent/60 px-2 py-0.5 text-accent">
-            <span aria-hidden>[</span>
-            {code}
-            <span aria-hidden>]</span>
-          </span>
-          {eyebrow !== undefined && (
-            <span className="readout text-fg-soft">{eyebrow}</span>
-          )}
-        </div>
+      <main className="mx-auto max-w-3xl px-5 pb-24 pt-32 sm:px-8 sm:pt-40">
+        {eyebrow !== undefined && (
+          <div className="mb-5 flex items-center gap-3">
+            <span aria-hidden className="block h-px w-6 bg-accent" />
+            <span className="readout text-accent">{eyebrow}</span>
+          </div>
+        )}
         <h1
           className="display-shout text-balance text-fg"
           style={{ fontSize: 'clamp(40px, 7vw, 80px)' }}

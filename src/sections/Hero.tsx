@@ -53,7 +53,7 @@ export function Hero(): ReactElement {
           initial="hidden"
           variants={fadeUp}
         >
-          <StatusPill>Active · Phoenix Arizona</StatusPill>
+          <StatusPill>Phoenix, Arizona</StatusPill>
           <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-fg-soft">
             Private product development · since {foundedYear}
           </span>
@@ -101,7 +101,7 @@ export function Hero(): ReactElement {
           </div>
           <div className="hidden items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-fg-soft sm:flex">
             <span className="animate-tick-blink">▼</span>
-            <span>Scroll · briefing follows</span>
+            <span>Scroll</span>
           </div>
         </motion.div>
       </div>

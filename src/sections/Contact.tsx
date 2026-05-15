@@ -18,7 +18,7 @@ export function Contact(): ReactElement {
             SEC.05
             <span aria-hidden>]</span>
           </span>
-          <span className="readout text-fg-soft">Establish Link</span>
+          <span className="readout text-fg-soft">Contact</span>
         </div>
 
         <h2
@@ -41,11 +41,8 @@ export function Contact(): ReactElement {
           <span className="font-display text-[22px] font-semibold text-fg group-hover:text-bg sm:text-[28px]">
             {contactEmail}
           </span>
-          <span className="ml-2 font-mono text-[10px] uppercase tracking-[0.28em] text-fg-soft group-hover:text-bg/80">
-            Transmit
-          </span>
           <ChevronRight
-            className="transition-transform group-hover:translate-x-1"
+            className="ml-2 transition-transform group-hover:translate-x-1"
             size={20}
             strokeWidth={2}
           />

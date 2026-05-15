@@ -5,7 +5,7 @@ import { contactEmail } from '../data/content';
 
 export function Support(): ReactElement {
   return (
-    <SubPage code="REC.SUPP" eyebrow="Direct Contact" title="Support">
+    <SubPage eyebrow="Get in touch" title="Support">
       <div className="border border-line/20 bg-bg-elev/40 p-5">
         <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.26em] text-accent">
           Direct contact
