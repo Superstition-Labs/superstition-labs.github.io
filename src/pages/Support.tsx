@@ -1,25 +1,27 @@
 import { type ReactElement } from 'react';
 
-import { SubPageLayout } from '../components/SubPageLayout';
-
-import styles from './Support.module.css';
+import { SubPage } from '../components/SubPage';
+import { contactEmail } from '../data/content';
 
 export function Support(): ReactElement {
   return (
-    <SubPageLayout title="Support">
-      <div className={styles.contactCard}>
-        <h3>Contact Us</h3>
-        <p>Have a question, issue, or feedback? We&apos;d love to hear from you.</p>
+    <SubPage eyebrow="// support · contact" title="Support">
+      <div className="rounded border border-line/60 bg-bg-elev/40 p-5">
+        <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.24em] text-accent">
+          Direct contact
+        </div>
         <p>
-          <strong>Email:</strong>{' '}
-          <a className={styles.link} href="mailto:support@superstitionlabs.com">
-            support@superstitionlabs.com
-          </a>
+          Have a question, issue, or feedback? We&apos;d love to hear from you.
         </p>
-        <p>We typically respond within 1-2 business days.</p>
+        <p className="mt-3">
+          <strong>Email:</strong> <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+        </p>
+        <p className="mt-3 text-sm text-fg-dim/80">
+          We typically respond within 1–2 business days.
+        </p>
       </div>
 
-      <h2>General Information</h2>
+      <h2>General information</h2>
       <p>
         <strong>Superstition Labs, LLC</strong>
         <br />
@@ -27,6 +29,6 @@ export function Support(): ReactElement {
         <br />
         Phoenix, AZ 85012
       </p>
-    </SubPageLayout>
+    </SubPage>
   );
 }

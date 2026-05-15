@@ -1,19 +1,27 @@
 import { type ReactElement } from 'react';
 
 import { SiteFooter } from '../components/SiteFooter';
-
-import styles from './Home.module.css';
+import { SiteHeader } from '../components/SiteHeader';
+import { Approach } from '../sections/Approach';
+import { Capabilities } from '../sections/Capabilities';
+import { Contact } from '../sections/Contact';
+import { Hero } from '../sections/Hero';
+import { SelectedWork } from '../sections/SelectedWork';
+import { WhatWeDo } from '../sections/WhatWeDo';
 
 export function Home(): ReactElement {
   return (
-    <div className={styles.page}>
-      <div className={styles.container}>
-        <section className={styles.hero}>
-          <h1>Superstition Labs</h1>
-          <p>A private product development company</p>
-        </section>
-      </div>
-      <SiteFooter variant="dark" />
+    <div className="min-h-screen bg-bg text-fg">
+      <SiteHeader />
+      <main>
+        <Hero />
+        <WhatWeDo />
+        <Capabilities />
+        <SelectedWork />
+        <Approach />
+        <Contact />
+      </main>
+      <SiteFooter />
     </div>
   );
 }

@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* C — Deep Space, Clean Surface (default) */
+  :root,
+  [data-direction='c'] {
+    --c-bg: 7 9 16;
+    --c-bg-elev: 13 17 28;
+    --c-fg: 243 238 229;
+    --c-fg-dim: 168 162 150;
+    --c-accent: 91 141 239;
+    --c-accent-warm: 201 166 107;
+    --c-line: 48 56 78;
+    --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    --font-body: 'Geist Variable', system-ui, sans-serif;
+    --font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
+  }
+
+  /* A — Orbital Operations */
+  [data-direction='a'] {
+    --c-bg: 4 5 9;
+    --c-bg-elev: 9 13 22;
+    --c-fg: 226 236 252;
+    --c-fg-dim: 132 154 188;
+    --c-accent: 79 209 255;
+    --c-accent-warm: 255 179 71;
+    --c-line: 50 78 116;
+    --font-display: 'Unbounded Variable', system-ui, sans-serif;
+    --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  /* B — Mission Console */
+  [data-direction='b'] {
+    --c-bg: 0 0 0;
+    --c-bg-elev: 4 8 4;
+    --c-fg: 0 255 133;
+    --c-fg-dim: 0 153 80;
+    --c-accent: 0 255 133;
+    --c-accent-warm: 255 176 0;
+    --c-line: 0 80 40;
+    --font-display: 'Major Mono Display', ui-monospace, monospace;
+    --font-body: 'JetBrains Mono Variable', ui-monospace, monospace;
+    --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  html {
+    background: rgb(var(--c-bg));
+    color: rgb(var(--c-fg));
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgb(var(--c-accent) / 0.35);
+    color: rgb(var(--c-fg));
+  }
+}
+
+@layer components {
+  .blueprint-grid {
+    background-image:
+      linear-gradient(rgb(var(--c-accent) / 0.06) 1px, transparent 1px),
+      linear-gradient(to right, rgb(var(--c-accent) / 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .scanlines {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgb(var(--c-accent) / 0.025) 0px,
+      rgb(var(--c-accent) / 0.025) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  }
+
+  .noise {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.55'/></svg>");
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}

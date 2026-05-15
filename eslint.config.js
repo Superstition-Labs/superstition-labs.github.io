@@ -103,4 +103,13 @@ export default tseslint.config(
       'prefer-const': 'error',
     },
   },
+  {
+    // React Three Fiber expresses three.js objects as JSX primitives whose
+    // props are forwarded onto Object3D/Material instances. eslint-plugin-react
+    // can't statically know about those, so disable the rule for scene files.
+    files: ['src/scenes/**/*.tsx'],
+    rules: {
+      'react/no-unknown-property': 'off',
+    },
+  },
 );

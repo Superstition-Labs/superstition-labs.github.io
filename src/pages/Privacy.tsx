@@ -1,21 +1,23 @@
 import { type ReactElement } from 'react';
 
-import { SubPageLayout } from '../components/SubPageLayout';
-
-import styles from './Privacy.module.css';
+import { SubPage } from '../components/SubPage';
+import { contactEmail } from '../data/content';
 
 export function Privacy(): ReactElement {
   return (
-    <SubPageLayout title="Privacy Policy">
-      <div className={styles.effectiveDate}>
-        <strong>Effective Date:</strong> December 28, 2025
-        <br />
-        <strong>Last Updated:</strong> December 28, 2025
+    <SubPage eyebrow="// legal · privacy policy" title="Privacy Policy">
+      <div className="rounded border border-line/60 bg-bg-elev/40 px-4 py-3 font-mono text-[12px] uppercase tracking-[0.18em] text-fg-dim">
+        <div>
+          <strong className="text-fg">Effective:</strong> December 28, 2025
+        </div>
+        <div>
+          <strong className="text-fg">Last updated:</strong> December 28, 2025
+        </div>
       </div>
 
       <p>
-        Superstition Labs, LLC (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed to
-        protecting your privacy. This Privacy Policy explains how we handle information in our
+        Superstition Labs, LLC (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed
+        to protecting your privacy. This Privacy Policy explains how we handle information in our
         mobile applications.
       </p>
 
@@ -24,8 +26,8 @@ export function Privacy(): ReactElement {
         <strong>We do not collect any personal information.</strong>
       </p>
       <p>
-        Our apps are designed to work entirely offline and store all data locally on your device. We
-        do not:
+        Our apps are designed to work entirely offline and store all data locally on your device.
+        We do not:
       </p>
       <ul>
         <li>Collect personal information</li>
@@ -44,9 +46,9 @@ export function Privacy(): ReactElement {
 
       <h2>Data Export and Sharing</h2>
       <p>
-        Our apps may include features that allow you to export data (such as PDF export). When you
-        use these features, you are in control of where the data goes. We do not receive or have
-        access to any exported data.
+        Our apps may include features that allow you to export data (such as PDF export). When
+        you use these features, you are in control of where the data goes. We do not receive or
+        have access to any exported data.
       </p>
 
       <h2>Third-Party Services</h2>
@@ -57,8 +59,8 @@ export function Privacy(): ReactElement {
 
       <h2>Children&apos;s Privacy</h2>
       <p>
-        Our apps do not collect any personal information from anyone, including children under the
-        age of 13.
+        Our apps do not collect any personal information from anyone, including children under
+        the age of 13.
       </p>
 
       <h2>Changes to This Policy</h2>
@@ -67,7 +69,7 @@ export function Privacy(): ReactElement {
         page with an updated &quot;Last Updated&quot; date.
       </p>
 
-      <h2>Contact Us</h2>
+      <h2>Contact</h2>
       <p>If you have any questions about this Privacy Policy, please contact us at:</p>
       <p>
         <strong>Superstition Labs, LLC</strong>
@@ -76,11 +78,8 @@ export function Privacy(): ReactElement {
         <br />
         Phoenix, AZ 85012
         <br />
-        Email:{' '}
-        <a className={styles.link} href="mailto:support@superstitionlabs.com">
-          support@superstitionlabs.com
-        </a>
+        Email: <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
       </p>
-    </SubPageLayout>
+    </SubPage>
   );
 }
