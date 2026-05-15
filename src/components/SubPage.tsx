@@ -24,7 +24,7 @@ export function SubPage({ children, eyebrow, title }: SubPageProps): ReactElemen
         )}
         <h1
           className="display-shout text-balance text-fg"
-          style={{ fontSize: 'clamp(40px, 7vw, 80px)' }}
+          style={{ fontSize: 'clamp(28px, 4.5vw, 52px)' }}
         >
           {title}
         </h1>

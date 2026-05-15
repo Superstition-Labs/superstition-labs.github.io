@@ -22,8 +22,8 @@ export function Contact(): ReactElement {
         </div>
 
         <h2
-          className="display-shout max-w-4xl text-balance text-fg"
-          style={{ fontSize: 'clamp(40px, 8vw, 96px)' }}
+          className="display-shout max-w-3xl text-balance text-fg"
+          style={{ fontSize: 'clamp(30px, 5vw, 60px)' }}
         >
           Have a hard problem?
           <br />

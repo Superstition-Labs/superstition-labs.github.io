@@ -64,7 +64,7 @@ export function WhatWeDo(): ReactElement {
             <>
               Three disciplines.
               <br />
-              <em>One stack.</em>
+              <em>One team.</em>
             </>
           }
         />

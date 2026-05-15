@@ -50,8 +50,8 @@ export const capabilities: readonly Capability[] = [
   { code: 'CAP-02', title: 'On-device ML & edge inference' },
   { code: 'CAP-03', title: 'Embedded firmware & RTOS' },
   { code: 'CAP-04', title: 'Computer vision & multi-modal AI' },
-  { code: 'CAP-05', title: 'Ground-station & telemetry tooling' },
-  { code: 'CAP-06', title: 'Hardware-in-the-loop test harnesses' },
+  { code: 'CAP-05', title: 'Operator tooling & dashboards' },
+  { code: 'CAP-06', title: 'Test harnesses & CI infrastructure' },
   { code: 'CAP-07', title: 'Encrypted comms & secure pipelines' },
   { code: 'CAP-08', title: 'Custom PCB & integration design' },
 ];

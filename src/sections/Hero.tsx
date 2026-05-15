@@ -59,24 +59,24 @@ export function Hero(): ReactElement {
           </span>
         </motion.div>
 
-        {/* The headline. Saira Condensed, all-caps, very large.
-            "scaled systems" gets the amber treatment + dropped baseline. */}
+        {/* The headline. Saira Condensed, all-caps. Verbs are highlighted in
+            amber so the action triplet reads as the punchline. */}
         <motion.div
           animate="visible"
-          className="max-w-4xl"
+          className="max-w-3xl"
           initial="hidden"
           transition={{ delay: 0.15 }}
           variants={fadeUp}
         >
           <h1
             className="display-shout text-balance text-fg"
-            style={{ fontSize: 'clamp(46px, 9.5vw, 120px)' }}
+            style={{ fontSize: 'clamp(36px, 6vw, 72px)' }}
           >
             We engineer
             <br />
             <em>scaled systems</em> that
             <br />
-            sense. decide. act.
+            <em>sense</em>, <em>decide</em>, and <em>act</em>.
           </h1>
           <p className="mt-8 max-w-xl font-body text-[15px] leading-[1.7] text-fg-dim sm:text-base">
             Software and hardware integration for sensor and AI systems — built with the
@@ -84,7 +84,7 @@ export function Hero(): ReactElement {
           </p>
         </motion.div>
 
-        {/* Bottom HUD row — wordmark / EST / scroll cue. */}
+        {/* Bottom HUD row — wordmark / EST. */}
         <motion.div
           animate="visible"
           className="flex flex-wrap items-end justify-between gap-8"
@@ -98,10 +98,6 @@ export function Hero(): ReactElement {
               <span>{wordmark}</span>
             </div>
             <div className="mt-1 pl-8 text-fg-soft">EST. {foundedYear} · LLC</div>
-          </div>
-          <div className="hidden items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-fg-soft sm:flex">
-            <span className="animate-tick-blink">▼</span>
-            <span>Scroll</span>
           </div>
         </motion.div>
       </div>

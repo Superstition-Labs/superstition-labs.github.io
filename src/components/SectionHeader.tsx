@@ -34,7 +34,7 @@ export function SectionHeader({
         <h2
           className={cn(
             'display-shout text-fg',
-            'text-[40px] leading-[0.92] sm:text-[64px] md:text-[72px]',
+            'text-[28px] leading-[0.95] sm:text-[40px] md:text-[48px]',
           )}
         >
           {title}

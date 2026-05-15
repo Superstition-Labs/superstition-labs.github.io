@@ -8,7 +8,7 @@ const principles: readonly { title: string; body: string }[] = [
     title: 'Classified-grade discipline',
   },
   {
-    body: 'Start with the sensor and the silicon. Earn the right to add software the further you climb.',
+    body: 'Understand the layer below the one you ship. Software lives downstream of hardware, runtime, and network — whether the substrate is silicon, a browser, or a cluster.',
     title: 'Bottom-up systems thinking',
   },
   {

@@ -19,7 +19,7 @@ export function Capabilities(): ReactElement {
           eyebrow="Deliverables"
           title={
             <>
-              Where <em>we deliver.</em>
+              <em>Where</em> we deliver.
             </>
           }
         />
