@@ -1,18 +1,16 @@
 import { type ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 
-import { wordmark } from '../data/content';
+import { contactEmail, wordmark } from '../data/content';
 import { cn } from '../lib/cn';
-import { DirectionToggle } from '../theme/DirectionToggle';
-import { useDirection } from '../theme/useDirection';
 
 export function SiteHeader(): ReactElement {
-  const { direction } = useDirection();
   return (
     <header
       className={cn(
         'fixed inset-x-0 top-0 z-40 flex items-center justify-between px-5 py-4 sm:px-8',
-        'bg-gradient-to-b from-bg via-bg/85 to-transparent backdrop-blur-[2px]',
+        'bg-bg/85 md:bg-gradient-to-b md:from-bg md:via-bg/85 md:to-transparent md:bg-bg/0',
+        'md:backdrop-blur-[2px]',
       )}
     >
       <Link
@@ -25,16 +23,20 @@ export function SiteHeader(): ReactElement {
         <span
           aria-hidden
           className={cn(
-            'inline-block h-2 w-2 rounded-full bg-accent transition-shadow',
-            'shadow-[0_0_12px_currentColor] text-accent',
-            direction === 'b' && 'animate-pulse-soft',
+            'inline-block h-2 w-2 rounded-full bg-accent',
+            'shadow-[0_0_10px_currentColor] text-accent',
           )}
         />
         <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-fg-dim group-hover:text-fg">
           {wordmark}
         </span>
       </Link>
-      <DirectionToggle />
+      <a
+        className="font-mono text-[10px] uppercase tracking-[0.24em] text-fg-dim hover:text-accent"
+        href={`mailto:${contactEmail}`}
+      >
+        Contact
+      </a>
     </header>
   );
 }

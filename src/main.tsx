@@ -5,7 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import './styles/fonts';
 import './styles/index.css';
 import { App } from './App';
-import { DirectionProvider } from './theme/DirectionProvider';
 
 // Restore the path captured by public/404.html (SPA fallback for GitHub Pages)
 // before React Router reads the initial location.
@@ -22,10 +21,8 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <StrictMode>
-    <DirectionProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </DirectionProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>,
 );

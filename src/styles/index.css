@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  /* C — Deep Space, Clean Surface (default) */
-  :root,
-  [data-direction='c'] {
+  :root {
     --c-bg: 9 11 18;
     --c-bg-elev: 15 19 30;
     --c-fg: 226 232 244;
@@ -16,47 +14,6 @@
     --font-display: 'Inter Variable', system-ui, -apple-system, sans-serif;
     --font-body: 'Inter Variable', system-ui, -apple-system, sans-serif;
     --font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
-  }
-
-  [data-direction='c'] em,
-  [data-direction='c'] i {
-    color: rgb(var(--c-accent));
-    font-style: italic;
-  }
-
-  /* Inter looks anemic at large sizes in weight 400; bump display headings to
-     600 with a touch of negative tracking — the "Linear/Vercel/Stripe" look. */
-  [data-direction='c'] .font-display {
-    font-weight: 600;
-    letter-spacing: -0.02em;
-  }
-
-  /* A — Orbital Operations */
-  [data-direction='a'] {
-    --c-bg: 4 5 9;
-    --c-bg-elev: 9 13 22;
-    --c-fg: 226 236 252;
-    --c-fg-dim: 132 154 188;
-    --c-accent: 79 209 255;
-    --c-accent-warm: 255 179 71;
-    --c-line: 50 78 116;
-    --font-display: 'Unbounded Variable', system-ui, sans-serif;
-    --font-body: 'IBM Plex Sans', system-ui, sans-serif;
-    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
-  }
-
-  /* B — Mission Console */
-  [data-direction='b'] {
-    --c-bg: 0 0 0;
-    --c-bg-elev: 4 8 4;
-    --c-fg: 0 255 133;
-    --c-fg-dim: 0 153 80;
-    --c-accent: 0 255 133;
-    --c-accent-warm: 255 176 0;
-    --c-line: 0 80 40;
-    --font-display: 'Major Mono Display', ui-monospace, monospace;
-    --font-body: 'JetBrains Mono Variable', ui-monospace, monospace;
-    --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
   }
 
   html,
@@ -77,6 +34,19 @@
     text-rendering: optimizeLegibility;
   }
 
+  em,
+  i {
+    color: rgb(var(--c-accent));
+    font-style: italic;
+  }
+
+  /* Inter looks anemic at large sizes in weight 400; bump display headings to
+     600 with a touch of negative tracking — the Linear/Vercel/Stripe look. */
+  .font-display {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
   ::selection {
     background: rgb(var(--c-accent) / 0.35);
     color: rgb(var(--c-fg));
@@ -84,23 +54,6 @@
 }
 
 @layer components {
-  .blueprint-grid {
-    background-image:
-      linear-gradient(rgb(var(--c-accent) / 0.06) 1px, transparent 1px),
-      linear-gradient(to right, rgb(var(--c-accent) / 0.06) 1px, transparent 1px);
-    background-size: 48px 48px;
-  }
-
-  .scanlines {
-    background-image: repeating-linear-gradient(
-      to bottom,
-      rgb(var(--c-accent) / 0.025) 0px,
-      rgb(var(--c-accent) / 0.025) 1px,
-      transparent 1px,
-      transparent 3px
-    );
-  }
-
   .noise {
     position: absolute;
     inset: 0;

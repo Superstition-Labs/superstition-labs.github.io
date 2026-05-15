@@ -89,6 +89,7 @@ export const work: readonly WorkEntry[] = [
   },
 ];
 
-export const tagline = 'We build the systems that sense, decide, and act.';
+export const tagline = 'We engineer scaled systems that sense, decide, and act.';
 export const wordmark = 'Superstition Labs';
-export const contactEmail = 'support@superstitionlabs.com';
+export const contactEmail = 'hello@superstitionlabs.com';
+export const foundedYear = 2019;
