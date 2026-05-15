@@ -21,6 +21,7 @@ const principles: readonly { title: string; body: string }[] = [
 
 export function Approach(): ReactElement {
   const { direction } = useDirection();
+  const staticInC = direction === 'c';
 
   return (
     <section
@@ -52,11 +53,15 @@ export function Approach(): ReactElement {
           {principles.map((p, i) => (
             <motion.div
               className="border-l border-accent/50 pl-6"
-              initial={{ opacity: 0, x: -20 }}
               key={p.title}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              viewport={{ margin: '-60px', once: true }}
-              whileInView={{ opacity: 1, x: 0 }}
+              {...(staticInC
+                ? { initial: false as const }
+                : {
+                    initial: { opacity: 0, x: -20 },
+                    transition: { delay: i * 0.1, duration: 0.6 },
+                    viewport: { margin: '-60px', once: true },
+                    whileInView: { opacity: 1, x: 0 },
+                  })}
             >
               <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
                 PRINCIPLE 0{i + 1}

@@ -21,37 +21,39 @@ function RedactionBar({
   );
 }
 
-function WorkCardC({ entry, index }: { readonly entry: WorkEntry; readonly index: number }): ReactElement {
+function WorkCardC({ entry }: { readonly entry: WorkEntry }): ReactElement {
   return (
-    <motion.article
-      className="group grid grid-cols-12 items-baseline gap-4 border-t border-line/60 py-8"
-      initial={{ opacity: 0, y: 24 }}
-      transition={{ delay: index * 0.06, duration: 0.6 }}
-      viewport={{ margin: '-60px', once: true }}
-      whileInView={{ opacity: 1, y: 0 }}
+    <article
+      className={cn(
+        'relative border border-line/60 bg-bg-elev/40 p-7 backdrop-blur-[1px]',
+        'transition-colors hover:border-accent/60 hover:bg-bg-elev/70',
+      )}
     >
-      <div className="col-span-2 font-mono text-[10px] uppercase tracking-[0.24em] text-fg-dim">
-        {entry.year}
+      <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.24em]">
+        <span className="text-accent">{entry.id.toUpperCase()}</span>
+        <span className="rounded border border-accent-warm/60 px-2 py-0.5 text-accent-warm">
+          {entry.year} · {entry.domain}
+        </span>
       </div>
-      <div className="col-span-7">
-        <div className="font-mono text-[10px] uppercase tracking-[0.24em] text-fg-dim">
-          {entry.client} · {entry.domain}
+      <div className="mt-6">
+        <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-fg-dim">
+          {entry.client}
         </div>
-        <h3 className="mt-2 font-display text-2xl leading-snug text-fg sm:text-3xl">
+        <h3 className="mt-2 font-display text-[26px] leading-[1.18] tracking-tight text-fg sm:text-[28px]">
           {entry.summary}
         </h3>
-        <div className="mt-3 font-body text-sm italic text-fg-dim">
-          Program name <RedactionBar width="120px" /> — details available under NDA.
+        <div className="mt-4 font-body text-sm italic text-fg-dim">
+          Program name <RedactionBar width="104px" /> — details available under NDA.
         </div>
       </div>
-      <div className="col-span-3 flex flex-wrap justify-end gap-1.5 font-mono text-[10px] uppercase tracking-[0.18em]">
+      <div className="mt-6 flex gap-1.5 font-mono text-[10px] uppercase tracking-[0.18em]">
         {entry.tags.map((t) => (
-          <span className="border border-line/70 px-2 py-0.5 text-fg-dim" key={t}>
+          <span className="border border-accent/40 px-2 py-0.5 text-accent" key={t}>
             {t}
           </span>
         ))}
       </div>
-    </motion.article>
+    </article>
   );
 }
 
@@ -156,9 +158,9 @@ export function SelectedWork(): ReactElement {
         </div>
 
         {direction === 'c' && (
-          <div>
-            {work.map((w, i) => (
-              <WorkCardC entry={w} index={i} key={w.id} />
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {work.map((w) => (
+              <WorkCardC entry={w} key={w.id} />
             ))}
           </div>
         )}

@@ -8,14 +8,33 @@
   [data-direction='c'] {
     --c-bg: 7 9 16;
     --c-bg-elev: 13 17 28;
-    --c-fg: 243 238 229;
-    --c-fg-dim: 168 162 150;
-    --c-accent: 91 141 239;
-    --c-accent-warm: 201 166 107;
-    --c-line: 48 56 78;
-    --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    --c-fg: 240 242 248;
+    --c-fg-dim: 156 170 196;
+    --c-accent: 79 209 255;
+    --c-accent-warm: 255 179 71;
+    --c-line: 50 78 116;
+    --font-display: 'Fraunces Variable', Georgia, 'Iowan Old Style', serif;
     --font-body: 'Geist Variable', system-ui, sans-serif;
     --font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
+    font-variation-settings:
+      'SOFT' 100,
+      'WONK' 0;
+  }
+
+  [data-direction='c'] .font-display {
+    font-variation-settings:
+      'SOFT' 100,
+      'opsz' 96,
+      'WONK' 0;
+  }
+
+  [data-direction='c'] em,
+  [data-direction='c'] i {
+    font-variation-settings:
+      'SOFT' 100,
+      'opsz' 72,
+      'WONK' 1;
+    font-style: italic;
   }
 
   /* A — Orbital Operations */

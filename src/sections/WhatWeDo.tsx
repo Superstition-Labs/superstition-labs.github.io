@@ -7,30 +7,31 @@ import { useDirection } from '../theme/useDirection';
 
 function PillarCardC({ index, pillar }: { readonly index: number; readonly pillar: Pillar }): ReactElement {
   return (
-    <motion.article
-      className="group relative flex flex-col gap-6 border-t border-line/60 py-10"
-      initial={{ opacity: 0, y: 30 }}
-      transition={{ delay: index * 0.08, duration: 0.7 }}
-      viewport={{ margin: '-80px', once: true }}
-      whileInView={{ opacity: 1, y: 0 }}
+    <article
+      className={cn(
+        'group relative border border-line/60 bg-bg-elev/40 p-8 backdrop-blur-[1px]',
+        'transition-colors hover:border-accent/60 hover:bg-bg-elev/70',
+      )}
     >
-      <div className="flex items-baseline justify-between">
-        <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-fg-dim">
-          0{index + 1}
-        </div>
-        <div className="flex gap-1 font-mono text-[10px] uppercase tracking-[0.18em] text-fg-dim/70">
-          {pillar.tags.map((t) => (
-            <span key={t}>· {t}</span>
-          ))}
-        </div>
+      <div
+        aria-hidden
+        className="absolute right-4 top-4 h-2 w-2 rounded-full bg-accent shadow-[0_0_10px_currentColor]"
+      />
+      <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
+        {String(index + 1).padStart(2, '0')} · discipline
       </div>
-      <h3 className="font-display text-4xl leading-tight tracking-tight text-fg sm:text-5xl">
+      <h3 className="mt-4 font-display text-[34px] leading-[1.1] tracking-tight text-fg">
         {pillar.title}
       </h3>
-      <p className="max-w-2xl font-body text-base leading-relaxed text-fg-dim sm:text-lg">
-        {pillar.summary}
-      </p>
-    </motion.article>
+      <p className="mt-5 font-body text-base leading-relaxed text-fg-dim">{pillar.summary}</p>
+      <div className="mt-7 flex gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-fg-dim">
+        {pillar.tags.map((t) => (
+          <span className="border border-line/70 px-2 py-0.5" key={t}>
+            {t}
+          </span>
+        ))}
+      </div>
+    </article>
   );
 }
 
@@ -115,7 +116,7 @@ export function WhatWeDo(): ReactElement {
         </div>
 
         {direction === 'c' && (
-          <div className="space-y-2">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {pillars.map((p, i) => (
               <PillarCardC index={i} key={p.id} pillar={p} />
             ))}

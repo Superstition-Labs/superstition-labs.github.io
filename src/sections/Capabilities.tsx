@@ -7,6 +7,7 @@ import { useDirection } from '../theme/useDirection';
 
 export function Capabilities(): ReactElement {
   const { direction } = useDirection();
+  const staticInC = direction === 'c';
 
   return (
     <section
@@ -50,11 +51,15 @@ export function Capabilities(): ReactElement {
                 'group relative flex min-h-[140px] flex-col justify-between bg-bg p-5',
                 'transition-colors hover:bg-bg-elev',
               )}
-              initial={{ opacity: 0 }}
               key={c.code}
-              transition={{ delay: i * 0.04, duration: 0.5 }}
-              viewport={{ margin: '-40px', once: true }}
-              whileInView={{ opacity: 1 }}
+              {...(staticInC
+                ? { initial: false as const }
+                : {
+                    initial: { opacity: 0 },
+                    transition: { delay: i * 0.04, duration: 0.5 },
+                    viewport: { margin: '-40px', once: true },
+                    whileInView: { opacity: 1 },
+                  })}
             >
               <div className="font-mono text-[10px] uppercase tracking-[0.24em] text-accent/80">
                 {c.code}
