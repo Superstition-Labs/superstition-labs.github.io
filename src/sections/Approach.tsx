@@ -1,5 +1,7 @@
 import { type ReactElement } from 'react';
 
+import { SectionHeader } from '../components/SectionHeader';
+
 const principles: readonly { title: string; body: string }[] = [
   {
     body: 'Deterministic builds, hardware-in-the-loop tests, and documentation that survives staff turnover.',
@@ -17,27 +19,31 @@ const principles: readonly { title: string; body: string }[] = [
 
 export function Approach(): ReactElement {
   return (
-    <section className="relative border-t border-line/40 bg-bg-elev/40 px-5 py-24 sm:px-8 sm:py-32">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-12">
-        <div className="md:col-span-5">
-          <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.32em] text-accent">
-            {'// 04 — approach'}
-          </div>
-          <h2 className="font-display text-3xl leading-tight text-fg sm:text-5xl">
-            Treat every program <em>like it&apos;s classified.</em>
-          </h2>
-        </div>
+    <section className="relative border-t border-line/15 bg-bg-deep px-5 py-24 sm:px-8 sm:py-32">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeader
+          code="SEC.04"
+          eyebrow="Approach"
+          title={
+            <>
+              Treat every program
+              <br />
+              <em>like it&apos;s classified.</em>
+            </>
+          }
+        />
 
-        <div className="space-y-10 md:col-span-7">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           {principles.map((p, i) => (
-            <div className="border-l border-accent/50 pl-6" key={p.title}>
+            <div className="relative pl-6" key={p.title}>
+              {/* Vertical tactical rail with a numerical stamp at the top. */}
+              <span aria-hidden className="absolute left-0 top-0 h-full w-px bg-line/30" />
+              <span aria-hidden className="absolute left-0 top-0 h-10 w-px bg-accent" />
               <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
-                PRINCIPLE 0{i + 1}
+                Principle · 0{i + 1}
               </div>
-              <h3 className="mt-2 font-display text-2xl leading-snug text-fg sm:text-3xl">
-                {p.title}
-              </h3>
-              <p className="mt-3 max-w-xl font-body text-[16px] leading-[1.7] text-fg-dim">
+              <h3 className="display-shout mt-3 text-[26px] text-fg">{p.title}</h3>
+              <p className="mt-4 font-body text-[15px] leading-[1.7] text-fg-dim">
                 {p.body}
               </p>
             </div>

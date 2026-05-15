@@ -1,7 +1,7 @@
 import { type ReactElement, useMemo } from 'react';
 
-// Lightweight, motion-free SVG used in place of the WebGL canvas on mobile —
-// keeps the hero from looking empty without paying any per-frame cost.
+// Static SVG used in place of the WebGL canvas on mobile. Colors match the
+// site palette: steel-blue mesh, amber active satellite, amber center pulse.
 export function OrbitalStatic(): ReactElement {
   const stars = useMemo(() => {
     let seed = 4242;
@@ -28,16 +28,16 @@ export function OrbitalStatic(): ReactElement {
     >
       <defs>
         <radialGradient cx="50%" cy="45%" id="planet-grad" r="55%">
-          <stop offset="0%" stopColor="#10243d" />
-          <stop offset="60%" stopColor="#08111f" />
-          <stop offset="100%" stopColor="#04080f" />
+          <stop offset="0%" stopColor="#0c1626" />
+          <stop offset="60%" stopColor="#04060a" />
+          <stop offset="100%" stopColor="#000000" />
         </radialGradient>
-        <radialGradient cx="50%" cy="50%" id="halo-cyan" r="50%">
-          <stop offset="0%" stopColor="#4FD1FF" stopOpacity="0.65" />
-          <stop offset="100%" stopColor="#4FD1FF" stopOpacity="0" />
+        <radialGradient cx="50%" cy="50%" id="halo-steel" r="50%">
+          <stop offset="0%" stopColor="#7C9CDC" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#7C9CDC" stopOpacity="0" />
         </radialGradient>
         <radialGradient cx="50%" cy="50%" id="halo-amber" r="50%">
-          <stop offset="0%" stopColor="#FFB347" stopOpacity="0.6" />
+          <stop offset="0%" stopColor="#FFB347" stopOpacity="0.7" />
           <stop offset="100%" stopColor="#FFB347" stopOpacity="0" />
         </radialGradient>
       </defs>
@@ -45,19 +45,12 @@ export function OrbitalStatic(): ReactElement {
       {/* Stars */}
       <g>
         {stars.map((s) => (
-          <circle
-            cx={s.cx}
-            cy={s.cy}
-            fill="white"
-            fillOpacity={s.o}
-            key={s.key}
-            r={s.r}
-          />
+          <circle cx={s.cx} cy={s.cy} fill="white" fillOpacity={s.o} key={s.key} r={s.r} />
         ))}
       </g>
 
       {/* Orbit ellipses */}
-      <g fill="none" stroke="#4FD1FF" strokeOpacity="0.22" strokeWidth="0.6">
+      <g fill="none" stroke="#7C9CDC" strokeOpacity="0.26" strokeWidth="0.6">
         <ellipse cx="200" cy="200" rx="118" ry="42" transform="rotate(12 200 200)" />
         <ellipse cx="200" cy="200" rx="148" ry="64" transform="rotate(-18 200 200)" />
       </g>
@@ -68,16 +61,17 @@ export function OrbitalStatic(): ReactElement {
         rx="172"
         ry="36"
         stroke="#FFB347"
-        strokeOpacity="0.18"
-        strokeWidth="0.6"
+        strokeOpacity="0.32"
+        strokeWidth="0.7"
         transform="rotate(-32 200 200)"
       />
 
       {/* Planet */}
       <circle cx="200" cy="200" fill="url(#planet-grad)" r="58" />
+      <circle cx="200" cy="200" fill="none" r="58" stroke="#FFB347" strokeOpacity="0.25" strokeWidth="0.5" />
 
-      {/* Neural mesh — simple icosahedron-like wireframe */}
-      <g fill="none" stroke="#4FD1FF" strokeOpacity="0.5" strokeWidth="0.6">
+      {/* Neural mesh — steel-blue wireframe icosahedron */}
+      <g fill="none" stroke="#7C9CDC" strokeOpacity="0.55" strokeWidth="0.6">
         <polygon points="200,135 260,170 260,230 200,265 140,230 140,170" />
         <polygon points="200,150 244,176 244,224 200,250 156,224 156,176" />
         <line x1="200" x2="200" y1="135" y2="265" />
@@ -86,37 +80,33 @@ export function OrbitalStatic(): ReactElement {
       </g>
 
       {/* Mesh node markers */}
-      <g fill="#4FD1FF">
+      <g fill="#7C9CDC">
         <circle cx="200" cy="135" r="1.6" />
         <circle cx="200" cy="265" r="1.6" />
         <circle cx="140" cy="170" r="1.6" />
         <circle cx="260" cy="170" r="1.6" />
         <circle cx="140" cy="230" r="1.6" />
         <circle cx="260" cy="230" r="1.6" />
-        <circle cx="200" cy="200" fill="#FFB347" r="1.6" />
       </g>
+      <circle cx="200" cy="200" fill="#FFB347" r="2.2" />
 
-      {/* Satellites with halos + connection beams to the planet */}
+      {/* Satellites — one amber primary, the rest steel. */}
       <g>
-        {/* Satellite 1 — cyan, right */}
-        <line stroke="#4FD1FF" strokeOpacity="0.28" strokeWidth="0.6" x1="320" x2="200" y1="178" y2="200" />
-        <circle cx="320" cy="178" fill="url(#halo-cyan)" r="14" />
-        <circle cx="320" cy="178" fill="#4FD1FF" r="2.6" />
+        <line stroke="#7C9CDC" strokeOpacity="0.32" strokeWidth="0.6" x1="320" x2="200" y1="178" y2="200" />
+        <circle cx="320" cy="178" fill="url(#halo-steel)" r="14" />
+        <polygon fill="#7C9CDC" points="316,174 326,178 316,182" />
 
-        {/* Satellite 2 — cyan, upper-left */}
-        <line stroke="#4FD1FF" strokeOpacity="0.28" strokeWidth="0.6" x1="88" x2="200" y1="148" y2="200" />
-        <circle cx="88" cy="148" fill="url(#halo-cyan)" r="13" />
-        <circle cx="88" cy="148" fill="#4FD1FF" r="2.4" />
+        <line stroke="#7C9CDC" strokeOpacity="0.32" strokeWidth="0.6" x1="88" x2="200" y1="148" y2="200" />
+        <circle cx="88" cy="148" fill="url(#halo-steel)" r="13" />
+        <polygon fill="#7C9CDC" points="84,144 94,148 84,152" />
 
-        {/* Satellite 3 — amber, lower-right */}
-        <line stroke="#FFB347" strokeOpacity="0.24" strokeWidth="0.6" x1="328" x2="200" y1="252" y2="200" />
-        <circle cx="328" cy="252" fill="url(#halo-amber)" r="13" />
-        <circle cx="328" cy="252" fill="#FFB347" r="2.4" />
+        <line stroke="#FFB347" strokeOpacity="0.42" strokeWidth="0.8" x1="328" x2="200" y1="252" y2="200" />
+        <circle cx="328" cy="252" fill="url(#halo-amber)" r="14" />
+        <polygon fill="#FFB347" points="322,247 334,252 322,257" />
 
-        {/* Satellite 4 — cyan, lower-left */}
-        <line stroke="#4FD1FF" strokeOpacity="0.22" strokeWidth="0.6" x1="76" x2="200" y1="270" y2="200" />
-        <circle cx="76" cy="270" fill="url(#halo-cyan)" r="11" />
-        <circle cx="76" cy="270" fill="#4FD1FF" r="2.2" />
+        <line stroke="#7C9CDC" strokeOpacity="0.26" strokeWidth="0.6" x1="76" x2="200" y1="270" y2="200" />
+        <circle cx="76" cy="270" fill="url(#halo-steel)" r="11" />
+        <polygon fill="#7C9CDC" points="72,267 82,270 72,273" />
       </g>
     </svg>
   );

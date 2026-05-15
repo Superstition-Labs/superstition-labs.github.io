@@ -1,48 +1,73 @@
 import { type ReactElement } from 'react';
 
+import { HudPanel } from '../components/HudPanel';
+import { SectionHeader } from '../components/SectionHeader';
 import { type Pillar, pillars } from '../data/content';
-import { cn } from '../lib/cn';
 
-function PillarCard({ index, pillar }: { readonly index: number; readonly pillar: Pillar }): ReactElement {
+function PillarCard({
+  index,
+  pillar,
+}: {
+  readonly index: number;
+  readonly pillar: Pillar;
+}): ReactElement {
   return (
-    <article
-      className={cn(
-        'group relative border border-line/60 bg-bg-elev/40 p-7',
-        'transition-colors hover:border-accent/60 hover:bg-bg-elev/70',
-      )}
-    >
+    <HudPanel className="p-7" hover>
+      {/* Index in the top-right — large condensed numeral, low contrast,
+          like a panel-number stencil. */}
       <div
         aria-hidden
-        className="absolute right-4 top-4 h-2 w-2 rounded-full bg-accent shadow-[0_0_10px_currentColor]"
-      />
-      <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
-        {String(index + 1).padStart(2, '0')} · discipline
+        className="absolute right-4 top-3 font-display text-[28px] font-bold leading-none text-fg-soft/30"
+      >
+        {String(index + 1).padStart(2, '0')}
       </div>
-      <h3 className="mt-4 font-display text-[26px] leading-[1.18] text-fg">{pillar.title}</h3>
-      <p className="mt-4 font-body text-[16px] leading-[1.7] text-fg-dim">{pillar.summary}</p>
-      <div className="mt-6 flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-fg-dim">
+
+      <div className="flex items-center gap-2">
+        <span aria-hidden className="block h-px w-6 bg-accent" />
+        <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
+          Discipline
+        </span>
+      </div>
+
+      <h3 className="display-shout mt-5 text-[28px] text-fg">{pillar.title}</h3>
+
+      <p className="mt-4 font-body text-[15px] leading-[1.7] text-fg-dim">{pillar.summary}</p>
+
+      <div className="mt-7 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-[0.18em]">
         {pillar.tags.map((t) => (
-          <span className="whitespace-nowrap border border-line/70 px-2 py-0.5" key={t}>
+          <span
+            className="whitespace-nowrap border border-line/40 px-2 py-0.5 text-fg-dim"
+            key={t}
+          >
             {t}
           </span>
         ))}
       </div>
-    </article>
+    </HudPanel>
   );
 }
 
 export function WhatWeDo(): ReactElement {
   return (
-    <section className="relative border-t border-line/40 bg-bg px-5 py-24 sm:px-8 sm:py-32">
+    <section className="relative border-t border-line/15 bg-bg px-5 py-24 sm:px-8 sm:py-32">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16 max-w-2xl">
-          <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.32em] text-accent">
-            {'// 01 — capabilities'}
-          </div>
-          <h2 className="font-display text-3xl leading-tight text-fg sm:text-5xl">
-            Three disciplines, <em>one stack.</em>
-          </h2>
-        </div>
+        <SectionHeader
+          aside={
+            <>
+              <span aria-hidden className="block h-px w-6 bg-line/40" />
+              03 active disciplines
+            </>
+          }
+          code="SEC.01"
+          eyebrow="Capabilities"
+          title={
+            <>
+              Three disciplines.
+              <br />
+              <em>One stack.</em>
+            </>
+          }
+        />
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {pillars.map((p, i) => (

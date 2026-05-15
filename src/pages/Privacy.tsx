@@ -5,8 +5,8 @@ import { contactEmail } from '../data/content';
 
 export function Privacy(): ReactElement {
   return (
-    <SubPage eyebrow="// legal · privacy policy" title="Privacy Policy">
-      <div className="rounded border border-line/60 bg-bg-elev/40 px-4 py-3 font-mono text-[12px] uppercase tracking-[0.18em] text-fg-dim">
+    <SubPage code="REC.PRIV" eyebrow="Legal · Privacy Policy" title="Privacy Policy">
+      <div className="border border-line/20 bg-bg-elev/40 px-4 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-fg-dim">
         <div>
           <strong className="text-fg">Effective:</strong> December 28, 2025
         </div>

@@ -4,14 +4,35 @@
 
 @layer base {
   :root {
-    --c-bg: 9 11 18;
-    --c-bg-elev: 15 19 30;
-    --c-fg: 226 232 244;
-    --c-fg-dim: 188 200 220;
-    --c-accent: 79 209 255;
-    --c-accent-warm: 255 179 71;
-    --c-line: 50 78 116;
-    --font-display: 'Inter Variable', system-ui, -apple-system, sans-serif;
+    /* Base surfaces — pure black canvas with two flat elevation steps. */
+    --c-bg: 0 0 0;
+    --c-bg-elev: 10 12 14;
+    --c-bg-deep: 4 5 7;
+
+    /* Foreground — cool white. Reads as "instrument readout" on black. */
+    --c-fg: 240 242 248;
+    --c-fg-dim: 156 163 175;
+    --c-fg-soft: 96 104 118;
+
+    /* Borders + grid — neutral cool gray, kept low-saturation on purpose. */
+    --c-line: 96 106 122;
+    --c-grid: 60 68 82;
+
+    /* Signature accent — warm amber-gold. Carries every "live" element on the
+       site (status pulses, IDs, hover states, key affordances). The page is
+       deliberately cool everywhere else so this one warm pops. */
+    --c-accent: 255 179 71;
+    --c-accent-hot: 255 145 32;
+
+    /* Cool secondary — steel-blue for orbital traces and quiet readouts.
+       Use sparingly: the amber should always read as more important. */
+    --c-steel: 124 156 220;
+
+    /* Status palette — almost never used, reserved for live indicators. */
+    --c-signal: 196 255 65;
+    --c-warn: 255 102 102;
+
+    --font-display: 'Saira Condensed', 'Inter Variable', system-ui, sans-serif;
     --font-body: 'Inter Variable', system-ui, -apple-system, sans-serif;
     --font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
   }
@@ -34,33 +55,112 @@
     text-rendering: optimizeLegibility;
   }
 
+  /* Italic gets the signal-amber treatment — used as the in-headline emphasis
+     mark throughout the site. Tone is "this is the part you remember". */
   em,
   i {
     color: rgb(var(--c-accent));
-    font-style: italic;
+    font-style: normal;
+    font-weight: inherit;
   }
 
-  /* Inter looks anemic at large sizes in weight 400; bump display headings to
-     600 with a touch of negative tracking — the Linear/Vercel/Stripe look. */
+  /* Saira Condensed at display sizes: tight, mechanical, slightly uppercase-
+     biased. Letter-spacing pulled in for a stamped/etched feel. */
   .font-display {
     font-weight: 600;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
   }
 
   ::selection {
     background: rgb(var(--c-accent) / 0.35);
-    color: rgb(var(--c-fg));
+    color: rgb(var(--c-bg));
   }
 }
 
 @layer components {
+  /* ---- Atmosphere -------------------------------------------------- */
+
+  /* Subtle film-grain over dark surfaces. Kept very low so it never reads
+     as "decorative noise" — just texture. */
   .noise {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.06;
+    opacity: 0.05;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.55'/></svg>");
+  }
+
+  /* Tactical dot grid — the page background pattern. 24px lattice, dots
+     barely visible until you look for them. */
+  .dot-grid {
+    background-image: radial-gradient(rgb(var(--c-grid) / 0.55) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: 0 0;
+  }
+
+  /* Horizontal scanlines — CRT instrument feel. 3px stride, very low contrast. */
+  .scanlines::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 2px,
+      rgb(255 255 255 / 0.012) 2px,
+      rgb(255 255 255 / 0.012) 3px
+    );
+  }
+
+  /* ---- HUD bracket corners ---------------------------------------- */
+
+  /* Four corner brackets on a relatively-positioned parent. Mark the four
+     edges of a "panel" — used on cards, framed readouts, etc. The brackets
+     overlay the panel edge slightly so the L shape sits visually outside. */
+  .hud-corners > .corner {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: rgb(var(--c-accent));
+    pointer-events: none;
+  }
+  .hud-corners > .corner-tl {
+    top: -1px;
+    left: -1px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+  }
+  .hud-corners > .corner-tr {
+    top: -1px;
+    right: -1px;
+    border-top: 1px solid;
+    border-right: 1px solid;
+  }
+  .hud-corners > .corner-bl {
+    bottom: -1px;
+    left: -1px;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+  }
+  .hud-corners > .corner-br {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+  }
+
+  /* ---- HUD readout chips ----------------------------------------- */
+
+  .readout {
+    @apply inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em];
+  }
+
+  /* ---- Section header eyebrow ------------------------------------ */
+
+  .eyebrow {
+    @apply font-mono text-[10px] uppercase tracking-[0.32em] text-accent;
   }
 }
 
@@ -70,5 +170,24 @@
   }
   .text-pretty {
     text-wrap: pretty;
+  }
+
+  /* Display headlines use Saira Condensed, all caps, very tight tracking —
+     the SpaceX press-kit / Destiny sub-header look. */
+  .display-shout {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    line-height: 0.95;
+  }
+
+  /* Slight glow used on accent pulses — kept restrained so it doesn't
+     blow out into a bloom-y mess. */
+  .glow-accent {
+    box-shadow: 0 0 12px rgb(var(--c-accent) / 0.55);
+  }
+  .glow-steel {
+    box-shadow: 0 0 10px rgb(var(--c-steel) / 0.4);
   }
 }
