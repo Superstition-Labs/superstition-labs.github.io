@@ -139,6 +139,7 @@ export function OrbitalScene(): ReactElement {
       camera={{ fov: 38, position: [0, 1.2, 4.5] }}
       dpr={[1, 2]}
       gl={{ antialias: true, powerPreference: 'high-performance' }}
+      style={{ pointerEvents: 'none', touchAction: 'pan-y' }}
     >
       <ambientLight intensity={0.4} />
       <directionalLight color="#4FD1FF" intensity={1.3} position={[5, 4, 5]} />

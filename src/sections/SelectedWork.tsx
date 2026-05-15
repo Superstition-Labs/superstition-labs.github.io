@@ -25,30 +25,33 @@ function WorkCardC({ entry }: { readonly entry: WorkEntry }): ReactElement {
   return (
     <article
       className={cn(
-        'relative border border-line/60 bg-bg-elev/40 p-7 backdrop-blur-[1px]',
+        'relative border border-line/60 bg-bg-elev/40 p-6 backdrop-blur-[1px]',
         'transition-colors hover:border-accent/60 hover:bg-bg-elev/70',
       )}
     >
-      <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.24em]">
+      <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] uppercase tracking-[0.22em]">
         <span className="text-accent">{entry.id.toUpperCase()}</span>
-        <span className="rounded border border-accent-warm/60 px-2 py-0.5 text-accent-warm">
+        <span className="whitespace-nowrap rounded border border-accent-warm/60 px-2 py-0.5 text-accent-warm">
           {entry.year} · {entry.domain}
         </span>
       </div>
-      <div className="mt-6">
+      <div className="mt-5">
         <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-fg-dim">
           {entry.client}
         </div>
-        <h3 className="mt-2 font-display text-[26px] leading-[1.18] tracking-tight text-fg sm:text-[28px]">
+        <h3 className="mt-2 font-display text-[22px] leading-[1.25] text-fg">
           {entry.summary}
         </h3>
-        <div className="mt-4 font-body text-sm italic text-fg-dim">
-          Program name <RedactionBar width="104px" /> — details available under NDA.
+        <div className="mt-3 font-body text-[15px] leading-[1.6] text-fg-dim">
+          Program name <RedactionBar width="96px" /> — details under NDA.
         </div>
       </div>
-      <div className="mt-6 flex gap-1.5 font-mono text-[10px] uppercase tracking-[0.18em]">
+      <div className="mt-5 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-[0.18em]">
         {entry.tags.map((t) => (
-          <span className="border border-accent/40 px-2 py-0.5 text-accent" key={t}>
+          <span
+            className="whitespace-nowrap border border-accent/40 px-2 py-0.5 text-accent"
+            key={t}
+          >
             {t}
           </span>
         ))}

@@ -9,7 +9,7 @@ function PillarCardC({ index, pillar }: { readonly index: number; readonly pilla
   return (
     <article
       className={cn(
-        'group relative border border-line/60 bg-bg-elev/40 p-8 backdrop-blur-[1px]',
+        'group relative border border-line/60 bg-bg-elev/40 p-7 backdrop-blur-[1px]',
         'transition-colors hover:border-accent/60 hover:bg-bg-elev/70',
       )}
     >
@@ -20,13 +20,11 @@ function PillarCardC({ index, pillar }: { readonly index: number; readonly pilla
       <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
         {String(index + 1).padStart(2, '0')} · discipline
       </div>
-      <h3 className="mt-4 font-display text-[34px] leading-[1.1] tracking-tight text-fg">
-        {pillar.title}
-      </h3>
-      <p className="mt-5 font-body text-base leading-relaxed text-fg-dim">{pillar.summary}</p>
-      <div className="mt-7 flex gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-fg-dim">
+      <h3 className="mt-4 font-display text-[26px] leading-[1.18] text-fg">{pillar.title}</h3>
+      <p className="mt-4 font-body text-[16px] leading-[1.7] text-fg-dim">{pillar.summary}</p>
+      <div className="mt-6 flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-fg-dim">
         {pillar.tags.map((t) => (
-          <span className="border border-line/70 px-2 py-0.5" key={t}>
+          <span className="whitespace-nowrap border border-line/70 px-2 py-0.5" key={t}>
             {t}
           </span>
         ))}

@@ -1,4 +1,4 @@
-import { Line, OrbitControls, Stars } from '@react-three/drei';
+import { Line, Stars } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
 import { type ReactElement, useMemo, useRef } from 'react';
@@ -156,6 +156,7 @@ export function NeuralMeshPlanet(): ReactElement {
       camera={{ fov: 32, position: [0, 0.3, 5.6] }}
       dpr={[1, 2]}
       gl={{ antialias: true, powerPreference: 'high-performance' }}
+      style={{ pointerEvents: 'none', touchAction: 'pan-y' }}
     >
       <ambientLight intensity={0.35} />
       <directionalLight color="#4FD1FF" intensity={1.6} position={[6, 4, 6]} />
@@ -170,14 +171,6 @@ export function NeuralMeshPlanet(): ReactElement {
       <OrbitingNode accent="cyan" inclination={-0.18} phase={4.2} radius={2.25} speed={0.13} />
 
       <Stars count={1200} depth={60} factor={1.6} fade radius={80} saturation={0} speed={0.2} />
-
-      <OrbitControls
-        autoRotate
-        autoRotateSpeed={0.35}
-        enablePan={false}
-        enableRotate={false}
-        enableZoom={false}
-      />
 
       <EffectComposer>
         <Bloom intensity={0.65} luminanceSmoothing={0.9} luminanceThreshold={0.32} mipmapBlur />
