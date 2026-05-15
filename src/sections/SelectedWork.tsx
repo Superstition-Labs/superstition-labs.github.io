@@ -1,47 +1,46 @@
-import { type ReactElement } from 'react';
+import { type ReactElement, useMemo } from 'react';
 
 import { type WorkEntry, work } from '../data/content';
 import { cn } from '../lib/cn';
 
-function RedactionBar({
-  className,
-  width = '96px',
-}: {
-  readonly className?: string;
-  readonly width?: string;
-}): ReactElement {
-  return (
-    <span
-      aria-label="Redacted"
-      className={cn('inline-block h-[1.1em] translate-y-[2px] bg-fg/85', className)}
-      style={{ width }}
-    />
-  );
-}
-
 function WorkCard({ entry }: { readonly entry: WorkEntry }): ReactElement {
+  const Icon = entry.icon;
   return (
     <article
       className={cn(
-        'relative border border-line/60 bg-bg-elev/40 p-6',
+        'group relative border border-line/60 bg-bg-elev/40 p-6',
         'transition-colors hover:border-accent/60 hover:bg-bg-elev/70',
       )}
     >
-      <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] uppercase tracking-[0.22em]">
-        <span className="text-accent">{entry.id.toUpperCase()}</span>
-        <span className="whitespace-nowrap rounded border border-accent-warm/60 px-2 py-0.5 text-accent-warm">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <div
+            className={cn(
+              'flex h-10 w-10 items-center justify-center rounded border border-line/70 bg-bg/50',
+              'transition-colors group-hover:border-accent/60 group-hover:bg-bg-elev',
+            )}
+          >
+            <Icon className="h-4 w-4 text-accent" strokeWidth={1.5} />
+          </div>
+          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+            {entry.id.toUpperCase()}
+          </span>
+        </div>
+        <span className="whitespace-nowrap rounded border border-accent-warm/60 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.22em] text-accent-warm">
           {entry.year} · {entry.domain}
         </span>
       </div>
+
       <div className="mt-5">
         <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-fg-dim">
           {entry.client}
         </div>
         <h3 className="mt-2 font-display text-[22px] leading-[1.25] text-fg">{entry.summary}</h3>
-        <div className="mt-3 font-body text-[15px] leading-[1.6] text-fg-dim">
-          Program name <RedactionBar /> — details under NDA.
+        <div className="mt-3 font-mono text-[10px] uppercase tracking-[0.22em] text-fg-dim/70">
+          Client & program details under NDA
         </div>
       </div>
+
       <div className="mt-5 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-[0.18em]">
         {entry.tags.map((t) => (
           <span
@@ -57,6 +56,11 @@ function WorkCard({ entry }: { readonly entry: WorkEntry }): ReactElement {
 }
 
 export function SelectedWork(): ReactElement {
+  const sorted = useMemo(
+    () => [...work].sort((a, b) => Number(b.year) - Number(a.year)),
+    [],
+  );
+
   return (
     <section className="relative border-t border-line/40 bg-bg px-5 py-24 sm:px-8 sm:py-32">
       <div className="mx-auto max-w-6xl">
@@ -73,12 +77,12 @@ export function SelectedWork(): ReactElement {
             </p>
           </div>
           <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-fg-dim">
-            {String(work.length).padStart(2, '0')} programs listed
+            {String(sorted.length).padStart(2, '0')} programs listed
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {work.map((w) => (
+          {sorted.map((w) => (
             <WorkCard entry={w} key={w.id} />
           ))}
         </div>

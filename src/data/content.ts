@@ -1,3 +1,14 @@
+import {
+  Cpu,
+  Crosshair,
+  Gauge,
+  Headphones,
+  Layers,
+  LayoutDashboard,
+  type LucideIcon,
+  ScanLine,
+} from 'lucide-react';
+
 export interface Pillar {
   readonly id: string;
   readonly title: string;
@@ -48,6 +59,7 @@ export const capabilities: readonly Capability[] = [
 export interface WorkEntry {
   readonly client: string;
   readonly domain: string;
+  readonly icon: LucideIcon;
   readonly id: string;
   readonly summary: string;
   readonly tags: readonly string[];
@@ -56,36 +68,72 @@ export interface WorkEntry {
 
 export const work: readonly WorkEntry[] = [
   {
-    client: 'Defense Prime',
-    domain: 'ISR',
+    client: 'Defense wearable OEM',
+    domain: 'Wearable',
+    icon: Headphones,
     id: 'sl-001',
-    summary: 'Multi-spectral sensor fusion pipeline for a fielded reconnaissance platform.',
-    tags: ['Fusion', 'CV', 'Edge'],
+    summary:
+      'AI-augmented tactical headset with on-device audio classification and operator cueing.',
+    tags: ['Embedded', 'Audio AI', 'Edge'],
     year: '2024',
   },
   {
-    client: 'Aerospace OEM',
-    domain: 'Unmanned',
+    client: 'Aerospace prime',
+    domain: 'Targeting',
+    icon: Crosshair,
     id: 'sl-002',
-    summary: 'On-device ML inference stack for an autonomous platform, fully air-gapped.',
-    tags: ['ML', 'Embedded', 'RTOS'],
-    year: '2024',
+    summary: 'Targeting system for a rotary-wing weapons platform.',
+    tags: ['Targeting', 'Optics', 'Real-time'],
+    year: '2022',
   },
   {
-    client: 'Defense Integrator',
-    domain: 'T&E',
+    client: 'Defense OEM',
+    domain: 'Embedded',
+    icon: Cpu,
     id: 'sl-003',
-    summary: 'Hardware-in-the-loop test harness with synthetic sensor injection.',
-    tags: ['HIL', 'Firmware', 'Tooling'],
-    year: '2023',
+    summary:
+      'Embedded predictive-maintenance computer with on-device anomaly models for a crew-served weapon platform.',
+    tags: ['Embedded', 'Predictive ML', 'RTOS'],
+    year: '2021',
   },
   {
-    client: 'Tier-1 Subcontractor',
-    domain: 'C2',
+    client: 'Precision-rifle OEM',
+    domain: 'Mobile CV',
+    icon: ScanLine,
     id: 'sl-004',
-    summary: 'Encrypted telemetry, ground tooling, and operator console for a classified program.',
-    tags: ['Crypto', 'Telemetry', 'UI'],
-    year: '2023',
+    summary:
+      'Phone-based computer-vision app that detects and scores shot groups from target images — fully offline.',
+    tags: ['CV', 'Mobile', 'On-device ML'],
+    year: '2026',
+  },
+  {
+    client: 'Firearms manufacturer',
+    domain: 'QC',
+    icon: Layers,
+    id: 'sl-005',
+    summary:
+      'Multi-sensor fusion platform for manufacturers to detect performance drift across production runs.',
+    tags: ['Fusion', 'QC', 'Telemetry'],
+    year: '2022',
+  },
+  {
+    client: 'Industrial manufacturer',
+    domain: 'Industrial',
+    icon: LayoutDashboard,
+    id: 'sl-006',
+    summary:
+      'Manufacturing telemetry dashboard with built-in anomaly detection across measurements and QC checks.',
+    tags: ['Dashboard', 'Anomaly ML', 'Telemetry'],
+    year: '2025',
+  },
+  {
+    client: 'Aerospace integrator',
+    domain: 'Life support',
+    icon: Gauge,
+    id: 'sl-007',
+    summary: 'In-flight CO₂ / O₂ monitoring for pressurized oxygen systems.',
+    tags: ['Sensors', 'Aviation', 'Real-time'],
+    year: '2021',
   },
 ];
 
