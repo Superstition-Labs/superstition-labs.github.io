@@ -72,11 +72,11 @@ export function Hero(): ReactElement {
             className="display-shout text-balance text-fg"
             style={{ fontSize: 'clamp(36px, 6vw, 72px)' }}
           >
-            We engineer
+            <em>We engineer</em>
             <br />
-            <em>scaled systems</em> that
+            scaled systems that
             <br />
-            <em>sense</em>, <em>decide</em>, and <em>act</em>.
+            sense, decide, and act
           </h1>
           <p className="mt-8 max-w-xl font-body text-[15px] leading-[1.7] text-fg-dim sm:text-base">
             Software and hardware integration for sensor and AI systems — built with the
