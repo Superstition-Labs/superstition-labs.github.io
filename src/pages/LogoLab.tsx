@@ -74,10 +74,11 @@ export function LogoLab(): ReactElement {
               <em>The Spire.</em>
             </h1>
             <p className="mt-6 max-w-2xl font-body text-[15px] leading-[1.7] text-fg-dim">
-              Weaver&apos;s Needle inside a bracket frame, with a circular orbital
-              arc passing behind the mountain. The satellite emerges from the right
-              side of the silhouette. 80×80 viewBox — drops cleanly into any
-              square slot (favicon, app icon, social card).
+              A squat Weaver&apos;s Needle silhouette with a circular orbital
+              arc passing behind the mountain. The satellite emerges from the
+              right side, just past where the cliff face occludes the orbit.
+              80×80 viewBox — drops cleanly into any square slot (favicon, app
+              icon, social card).
             </p>
             <div className="mt-6">
               <Link

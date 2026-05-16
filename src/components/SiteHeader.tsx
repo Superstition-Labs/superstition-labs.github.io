@@ -22,8 +22,8 @@ export function SiteHeader(): ReactElement {
         <SpireMark
           aria-hidden
           className="text-accent group-hover:text-accent"
-          height={24}
-          width={24}
+          height={28}
+          width={28}
         />
         <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-fg group-hover:text-accent">
           {wordmark}
