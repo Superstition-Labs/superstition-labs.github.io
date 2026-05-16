@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { contactEmail, wordmark } from '../data/content';
 import { cn } from '../lib/cn';
 
+import { SpireMark } from './SpireMark';
+
 export function SiteHeader(): ReactElement {
   return (
     <header
@@ -17,15 +19,12 @@ export function SiteHeader(): ReactElement {
         className="group inline-flex items-center gap-3 text-fg focus-visible:outline focus-visible:outline-1 focus-visible:outline-accent"
         to="/"
       >
-        <span
+        <SpireMark
           aria-hidden
-          className="grid h-5 w-5 place-items-center border border-accent/70 text-accent"
-        >
-          {/* Triangle mark — recurring across the site. */}
-          <svg className="h-2.5 w-2.5" fill="currentColor" viewBox="0 0 10 10">
-            <polygon points="1,1 9,5 1,9" />
-          </svg>
-        </span>
+          className="text-accent group-hover:text-accent"
+          height={24}
+          width={24}
+        />
         <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-fg group-hover:text-accent">
           {wordmark}
         </span>
