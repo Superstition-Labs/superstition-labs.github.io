@@ -28,6 +28,9 @@ export function SiteFooter(): ReactElement {
           </p>
         </div>
         <div className="flex flex-col gap-2">
+          <Link className="hover:text-accent" to="/brand-guidelines">
+            Brand Guidelines
+          </Link>
           <Link className="hover:text-accent" to="/privacy">
             Privacy Policy
           </Link>
