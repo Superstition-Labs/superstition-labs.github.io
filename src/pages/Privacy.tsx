@@ -11,7 +11,7 @@ export function Privacy(): ReactElement {
           <strong className="text-fg">Effective:</strong> December 28, 2025
         </div>
         <div>
-          <strong className="text-fg">Last updated:</strong> December 28, 2025
+          <strong className="text-fg">Last updated:</strong> May 23, 2026
         </div>
       </div>
 
@@ -20,6 +20,14 @@ export function Privacy(): ReactElement {
         to protecting your privacy. This Privacy Policy explains how we handle information in our
         mobile applications.
       </p>
+
+      <h2>Applies To</h2>
+      <p>This policy covers all mobile applications published by Superstition Labs, LLC, including:</p>
+      <ul>
+        <li>
+          <strong>Neon 2048</strong> &mdash; an offline puzzle game for Android
+        </li>
+      </ul>
 
       <h2>Information We Collect</h2>
       <p>
